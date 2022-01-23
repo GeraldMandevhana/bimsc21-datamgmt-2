@@ -56,8 +56,8 @@ function init () {
     // or create a material
     // material = new THREE.MeshStandardMaterial( {
     //     color: 0xffffff,
-    //     metalness: 0.0,
-    //     roughness: 0.0
+    //     metalness: 0.7,
+    //     roughness: 0.4
     // } )
 
     // load hdr cube map
