@@ -40,7 +40,7 @@ function init() {
 
     // loader.load( 'Table.3dm', function ( object ) {
     loader.load( 'Table_2.3dm', function ( object ) {
-    // loader.load( 'sphere.3dm', function ( object ) {
+    //loader.load( 'sphere.3dm', function ( object ) {
 
         document.getElementById('loader').remove()
         scene.add( object )
@@ -115,6 +115,8 @@ function onClick( event ) {
     }
 
 }
+
+
 
 function animate() {
 

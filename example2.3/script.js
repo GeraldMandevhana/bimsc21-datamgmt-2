@@ -6,7 +6,8 @@ import { HDRCubeTextureLoader } from 'https://cdn.jsdelivr.net/npm/three@0.124.0
 
 // declare variables to store scene, camera, and renderer
 let scene, camera, renderer
-const model = 'Rhino_Logo.3dm'
+//const model = 'Rhino_Logo.3dm'
+const model = 'Missile.3dm'
 
 // call functions
 init()
@@ -42,16 +43,28 @@ function init () {
 
     let material, cubeMap
 
-    // load a pbr material
-    const tl = new THREE.TextureLoader()
-    tl.setPath('materials/PBR/streaked-metal1/')
-    material = new THREE.MeshPhysicalMaterial()
-    material.map          = tl.load('streaked-metal1_base.png')
-    material.aoMmap       = tl.load('streaked-metal1_ao.png')
-    material.normalMap    = tl.load('streaked-metal1_normal.png')
-    material.metalnessMap = tl.load('streaked-metal1_metallic.png')
-    material.metalness = 0.2
-    material.roughness = 0.0
+    // load a pbr material - Original
+    // const tl = new THREE.TextureLoader()
+    // tl.setPath('materials/PBR/streaked-metal1/')
+    // material = new THREE.MeshPhysicalMaterial()
+    // material.map          = tl.load('streaked-metal1_base.png')
+    // material.aoMmap       = tl.load('streaked-metal1_ao.png')
+    // material.normalMap    = tl.load('streaked-metal1_normal.png')
+    // material.metalnessMap = tl.load('streaked-metal1_metallic.png')
+    // material.metalness = 0.2
+    // material.roughness = 0.0
+
+    // load a pbr material -GM
+      const tl = new THREE.TextureLoader()
+      tl.setPath('materials/GreenRust/')
+      material = new THREE.MeshPhysicalMaterial()
+      material.map          = tl.load('green_metal_rust_diff_4k.jpg')
+      material.aoMmap       = tl.load('green_metal_rust_disp_4k.png')
+      material.normalMap    = tl.load('green_metal_rust_nor_gl_4k.exr')
+      material.metalnessMap = tl.load('green_metal_rust_rough_4k.jpg')
+      material.metalness = 0.2
+      material.roughness = 0.5
+
 
     // or create a material
     // material = new THREE.MeshStandardMaterial( {
@@ -67,13 +80,20 @@ function init () {
     //     .load( [ 'px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr' ] )
     
     // or, load cube map
+    // cubeMap = new THREE.CubeTextureLoader()
+    //     .setPath('textures/cube/Bridge2/')
+    //     .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] )
+        
+    // or, load cube map GM
     cubeMap = new THREE.CubeTextureLoader()
-        .setPath('textures/cube/Bridge2/')
+        .setPath('textures/cube/Water/')
         .load( [ 'px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg' ] )
-    
+
+
     scene.background = cubeMap
     material.envMap = scene.background
 
+    
     //////////////////////////////////////////////
 
     // load the model
@@ -103,6 +123,7 @@ function init () {
     } )
 
 }
+
 
 // function to continuously render the scene
 function animate() {
